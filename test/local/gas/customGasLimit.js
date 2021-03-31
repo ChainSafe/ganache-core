@@ -8,7 +8,7 @@ describe("Gas", function() {
       const { web3 } = await initializeTestProvider(ganacheProviderOptions);
       const { gasLimit } = await web3.eth.getBlock(0);
 
-      assert.deepStrictEqual(gasLimit, 5000000);
+      assert.deepStrictEqual(gasLimit, "5000000");
     });
   });
 });
