@@ -195,7 +195,7 @@ function test(forked) {
           from: accounts[0],
           to: accounts[1],
           value: 100,
-          gas
+          gas: parseInt(gas)
         });
       });
 
@@ -210,7 +210,7 @@ function test(forked) {
     let options;
     before("set up transaction with multiple calls to the same contract to be traced", async() => {
       const { accounts, instance } = context;
-      options = { from: accounts[0], gas };
+      options = { from: accounts[0], gas: parseInt(gas) };
 
       // from previous tests, otherValue should be 26 + 1234
       const ov = instance.methods.otherValue();
