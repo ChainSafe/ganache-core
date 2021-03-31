@@ -389,7 +389,7 @@ describe("Gas", function() {
               case "byzantium":
               case "petersburg":
                 // since we are resetting to a non-zero value, there is no gas added to the refund counter here
-                assert.strictEqual(receipt.gasUsed, gasEstimate);
+                assert.strictEqual(receipt.gasUsed, String(gasEstimate));
                 break;
               case "muirGlacier":
               case "istanbul": // EIP-2200
@@ -515,7 +515,7 @@ describe("Gas", function() {
                 // resets storage's current value to 0 and 15000 gas is added to the refund counter, and then
                 // it replaces x with gasleft, which removes 150000 gas from the refund counter per Constantinople
                 // EIP 1283 leaving us with a rsclear refund of 0
-                assert.strictEqual(receipt.gasUsed, gasEstimate);
+                assert.strictEqual(receipt.gasUsed, String(gasEstimate));
                 break;
               default:
                 throw new Error("Invalid hardfork option: " + provider.options.hardfork);
@@ -574,7 +574,7 @@ describe("Gas", function() {
               // resets storage back to 0, 19800 gas is added to the refund counter per Constantinople EIP 1283
               assert.strictEqual(
                 receipt.gasUsed,
-                gasEstimate - String(RSELFDESTRUCT_REFUND - RSCLEAR_REFUND_FOR_RESETTING_DIRTY_SLOT_TO_ZERO)
+                String(gasEstimate - RSELFDESTRUCT_REFUND - RSCLEAR_REFUND_FOR_RESETTING_DIRTY_SLOT_TO_ZERO)
               );
               break;
             default:
@@ -723,7 +723,7 @@ describe("Gas", function() {
             "Gas and cumulative gas should NOT be equal for the Third Tx."
           );
 
-          const totalGas = receipt[0].gasUsed + receipt[1].gasUsed + receipt[2].gasUsed;
+          const totalGas = parseInt(receipt[0].gasUsed) + parseInt(receipt[1].gasUsed) + parseInt(receipt[2].gasUsed);
           assert.deepStrictEqual(
             String(totalGas + transactionCostMinusRefund),
             receipt[1].cumulativeGasUsed,
@@ -933,14 +933,14 @@ describe("Gas", function() {
             "Gas and cumulative gas should NOT be equal for the Third Tx."
           );
 
-          const totalGas = receipt[0].gasUsed + receipt[1].gasUsed + receipt[2].gasUsed;
+          const totalGas = parseInt(receipt[0].gasUsed) + parseInt(receipt[1].gasUsed) + parseInt(receipt[2].gasUsed);
           assert.deepStrictEqual(
-            totalGas,
+            String(totalGas),
             receipt[1].cumulativeGasUsed,
             "Total Gas should be equal the final tx.cumulativeGas"
           );
           assert.deepStrictEqual(
-            totalGas,
+            String(totalGas),
             currentBlock.gasUsed,
             "Total Gas should be equal to the currentBlock.gasUsed"
           );
