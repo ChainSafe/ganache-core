@@ -566,7 +566,7 @@ describe("Gas", function() {
             case "istanbul": // EIP-2200
               assert.strictEqual(
                 receipt.gasUsed,
-                gasEstimate - String(RSELFDESTRUCT_REFUND - RSCLEAR_REFUND_FOR_RESETTING_DIRTY_SLOT_TO_ZERO_ISTANBUL)
+                String(gasEstimate - RSELFDESTRUCT_REFUND - RSCLEAR_REFUND_FOR_RESETTING_DIRTY_SLOT_TO_ZERO_ISTANBUL)
               );
               break;
             case "constantinople":

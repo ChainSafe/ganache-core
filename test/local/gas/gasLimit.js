@@ -18,7 +18,7 @@ describe("Gas", function() {
       const { provider, web3 } = context;
       const assignedGasLimit = provider.engine.manager.state.blockchain.blockGasLimit;
       const { gasLimit } = await web3.eth.getBlock("latest");
-      assert.deepStrictEqual(gasLimit, to.number(assignedGasLimit));
+      assert.deepStrictEqual(gasLimit, String(to.number(assignedGasLimit)));
     });
   });
 });

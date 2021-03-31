@@ -174,8 +174,8 @@ const tests = function(web3) {
         totalDifficulty: "0",
         extraData: "0x",
         size: 1000,
-        gasLimit: 6721975,
-        gasUsed: 0,
+        gasLimit: "6721975",
+        gasUsed: "0",
         timestamp: block.timestamp, // Don't test this one.
         transactions: [],
         uncles: []
