@@ -281,7 +281,7 @@ describe("Gas", function() {
             const { gasUsed: signedGasUsed } = await web3.eth.sendSignedTransaction(sign(txParams).serialize());
             const { result: newBalance } = await send("eth_getBalance", accounts[0]);
             // Gasprice * ( sum of gas used )
-            const gas = toBN(parseInt(gasPrice)).mul(toBN(initialGasUsed).addn(signedGasUsed));
+            const gas = toBN(gasPrice).mul(toBN(initialGasUsed).addn(signedGasUsed));
             // Our current balance, plus the wei spent on gas === original gas
             const currentBalancePlusGas = toBN(newBalance)
               .add(gas)
