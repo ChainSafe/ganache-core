@@ -77,7 +77,7 @@ async function deploy(abi, bytecode, web3, options = {}, existingAccounts = []) 
   const contract = new web3.eth.Contract(abi);
   const instance = await contract
     .deploy({ data: bytecode, arguments: options.constructorArguments })
-    .send({ from: accounts[0], gas })
+    .send({ from: accounts[0], gas: parseInt(gas) })
     .on("receipt", (rcpt) => {
       receipt = rcpt;
     });
