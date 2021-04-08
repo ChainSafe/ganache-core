@@ -282,6 +282,7 @@ describe("Gas", function() {
             const { result: newBalance } = await send("eth_getBalance", accounts[0]);
             // Gasprice * ( sum of gas used )
             const gas = toBN(gasPrice).mul(toBN(initialGasUsed).addn(signedGasUsed));
+            console.log(gas, 'THIS')
             // Our current balance, plus the wei spent on gas === original gas
             const currentBalancePlusGas = toBN(newBalance)
               .add(gas)
