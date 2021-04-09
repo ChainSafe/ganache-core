@@ -12,7 +12,7 @@ process.removeAllListeners("uncaughtException");
 function test(forked) {
   let context;
   const mnemonic = "sweet candy treat";
-  const gas = '3141592';
+  const gas = 3141592;
   let hashToTrace = null;
   let multipleCallsHashToTrace = null;
   const expectedValueBeforeTrace = "1234";
